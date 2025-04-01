@@ -1,0 +1,205 @@
+<!--
+<mat-toolbar>
+  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+    <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+  </button>
+  My Page
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav>
+    <mat-nav-list>
+      <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/">
+        <mat-icon matListItemIcon>home</mat-icon>
+        Home
+      </mat-list-item>
+      <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/filiais">
+        <mat-icon matListItemIcon>person</mat-icon>
+        Pofile
+      </mat-list-item>
+      <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/pessoas">
+        <mat-icon matListItemIcon>info</mat-icon>
+        About
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+-->
+<mat-toolbar>
+  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+    <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+  </button>
+  Minhas Vendas
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav>
+    <mat-nav-list>
+      <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/">
+        <mat-icon matListItemIcon>home</mat-icon>
+        Home
+      </mat-list-item>
+   <!--   <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/pessoas">
+        <mat-icon matListItemIcon>person</mat-icon>
+        Pessoas
+      </mat-list-item>
+-->
+      <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/filiais">
+        <mat-icon matListItemIcon>person</mat-icon>
+        Filial
+      </mat-list-item>
+
+      <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/clientes">
+        <mat-icon matListItemIcon>person</mat-icon>
+        Clientes
+      </mat-list-item>
+
+      <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/produtos">
+        <mat-icon matListItemIcon>person</mat-icon>
+        Produto
+      </mat-list-item>
+      
+      <!--
+      <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/vendas">
+        <mat-icon matListItemIcon>info</mat-icon>
+        Vendas
+      </mat-list-item>
+      
+      <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/vendasFilial">
+        <mat-icon matListItemIcon>info</mat-icon>
+        Vendas por Filial
+      </mat-list-item>
+      
+      <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/vendasCliente">
+        <mat-icon matListItemIcon>info</mat-icon>
+        Vendas por Cliente
+      </mat-list-item>
+
+      <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/about">
+        <mat-icon matListItemIcon>info</mat-icon>
+        Filial
+      </mat-list-item>
+    -->
+
+    </mat-nav-list>
+
+    <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/vendas">
+      <mat-icon matListItemIcon>info</mat-icon>
+      Venda
+    </mat-list-item>
+
+    <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/tratarvendas">
+      <mat-icon matListItemIcon>info</mat-icon>
+      Tratar Venda
+    </mat-list-item>
+
+    <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/vendascriada">
+      <mat-icon matListItemIcon>person</mat-icon>
+      VendaCriada
+    </mat-list-item>
+
+    <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/vendasmodificada">
+      <mat-icon matListItemIcon>person</mat-icon>
+      Venda Modificada
+    </mat-list-item>
+    
+    <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/vendascancelada">
+      <mat-icon matListItemIcon>person</mat-icon>
+      Venda Cancelada
+    </mat-list-item>
+
+    
+    <mat-list-item (click)="showSubSubMenu = !showSubSubMenu" class="parent">
+      <mat-icon matListItemIcon>info</mat-icon>
+      <span class="full-width" *ngIf="isExpanded || isShowing">Vendas</span>
+      <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubSubMenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+    </mat-list-item>
+    
+    <div class="submenu" [ngClass]="{'expanded' : showSubSubMenu}" *ngIf="isShowing || isExpanded">
+   <!-- 
+      <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/vendas">
+           <mat-icon matListItemIcon>view_headline</mat-icon>Por Vendas
+      </mat-list-item>
+      --> 
+      <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/vendasCliente">
+        <mat-icon matListItemIcon>vertical_split</mat-icon>Por Cliente</mat-list-item>
+      <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/vendasFilial">
+        <mat-icon matListItemIcon>view_agenda</mat-icon>
+        Por Filial</mat-list-item>
+        <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/vendasproduto">
+        <mat-icon matListItemIcon>view_headline</mat-icon>Por Produtos</mat-list-item>      
+    </div>
+
+
+
+    
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+<!--
+
+<mat-toolbar color="primary" class="example-toolbar">
+  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()"
+   (click)="isExpanded = !isExpanded">
+    
+  <mat-icon>menu</mat-icon></button>
+  <h1 class="example-app-name">Minhas Vendas</h1>
+</mat-toolbar>
+
+
+
+
+
+<mat-sidenav-container class="example-container" autosize>
+  <mat-sidenav #sidenav1 class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+    <mat-nav-list>
+      <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+        <mat-icon mat-list-icon>home</mat-icon>
+        <span class="full-width" *ngIf="isExpanded || isShowing">Sistema</span>
+        
+        <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+      </mat-list-item>
+      <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">
+        <a mat-list-item href="/vendasCliente">Clientes</a>
+        <a mat-list-item routerLink="/clientes">Filial</a>
+        
+        <mat-list-item (click)="showSubSubMenu = !showSubSubMenu" class="parent">
+          <span class="full-width" *ngIf="isExpanded || isShowing">Vendas</span>
+          <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubSubMenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+        </mat-list-item>
+        <div class="submenu" [ngClass]="{'expanded' : showSubSubMenu}" *ngIf="isShowing || isExpanded">
+          <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/vendasCliente">
+            <mat-icon matListItemIcon>info</mat-icon>Por Cliente
+          </mat-list-item>
+          <mat-list-item routerLink="/vendasCliente">
+            <mat-icon matListItemIcon>info</mat-icon>Por Filial
+          </mat-list-item>
+          <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" href="/vendasCliente">
+            <mat-icon matListItemIcon>info</mat-icon>Por Vendas
+          </mat-list-item>
+        </div>
+      </div>
+    </mat-nav-list>
+    <mat-nav-list>
+</mat-nav-list>
+  </mat-sidenav>
+
+  <div class="example-sidenav-content">
+    Main content that resizes properly
+  </div>
+
+</mat-sidenav-container>
+-->
